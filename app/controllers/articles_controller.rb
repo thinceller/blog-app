@@ -31,6 +31,11 @@ class ArticlesController < ApplicationController
     # REDISからデータを取り出す
   end
 
+  def destroy
+    Article.find(params[:id]).destroy
+    redirect_to root_url
+  end
+
   private
 
     def article_params
