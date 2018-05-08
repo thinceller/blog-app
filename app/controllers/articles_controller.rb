@@ -1,5 +1,10 @@
 class ArticlesController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :edit]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+
+  def show
+    @article = Article.find(params[:id])
+    REDIS.zincrby "articles/pv", 1, @article.id
+  end
 
   def new
     @article = Article.new
@@ -23,12 +28,6 @@ class ArticlesController < ApplicationController
     else
       render 'edit'
     end
-  end
-
-  def show
-    @article = Article.find(params[:id])
-    REDIS.zincrby "articles/pv", 1, @article.id
-    # REDISからデータを取り出す
   end
 
   def destroy

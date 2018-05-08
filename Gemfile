@@ -33,6 +33,7 @@ gem 'jbuilder', '~> 2.5'
 
 # additional gem for this app
 gem 'devise'
+gem 'redis'
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record

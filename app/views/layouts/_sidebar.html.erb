@@ -1,0 +1,11 @@
+<div id="sidebar">
+  <h2>★PV数ランキング</h2>
+  <ul>
+    <% Article.most_popular.each do |article| %>
+      <li>
+        <%= link_to article.title, "articles/#{article.id}" %>
+        <span><%= Article.get_pv article.id %>pv</span>
+      </li>
+    <% end %>
+  </ul>
+</div>
