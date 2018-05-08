@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :edit]
 
   def new
     @article = Article.new
@@ -12,6 +13,10 @@ class ArticlesController < ApplicationController
 
   def edit
     # 記事編集
+  end
+
+  def show
+    @article = Article.find(params[:id])
   end
 
   private
