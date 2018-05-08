@@ -7,12 +7,17 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
+    @article.update(user_id: current_user[:id])
     @article.save
     redirect_to root_url
   end
 
   def edit
-    # 記事編集
+    @article = Article.find(params[:id])
+  end
+
+  def update
+    # 編集後の処理
   end
 
   def show
