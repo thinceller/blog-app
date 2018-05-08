@@ -31,7 +31,9 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    Article.find(params[:id]).destroy
+    article = Article.find(params[:id])
+    REDIS.zrem "articles/pv", article.id
+    article.destroy
     redirect_to root_url
   end
 
