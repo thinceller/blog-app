@@ -17,11 +17,18 @@ class ArticlesController < ApplicationController
   end
 
   def update
-    # 編集後の処理
+    @article = Article.find(params[:id])
+    if @article.update_attributes(article_params)
+      redirect_to root_url
+    else
+      render 'edit'
+    end
   end
 
   def show
     @article = Article.find(params[:id])
+    REDIS.zincrby "articles/pv", 1, @article.id
+    # REDISからデータを取り出す
   end
 
   private
