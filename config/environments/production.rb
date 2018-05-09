@@ -81,7 +81,7 @@ Rails.application.configure do
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
   # ENV for Redis
-  ENV["REDIS"] = "redis://redistogo:45a05a390b19224fa32e1449596b7596@soldierfish.redistogo.com:10757/"
+  ENV["REDIS"] = "redis://h:p79dd46668010010de7a742a5d57484df2bba612c8249f7d4be1ab268f944e59f@ec2-35-168-25-23.compute-1.amazonaws.com:43839"
 
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
