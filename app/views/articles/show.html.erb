@@ -1,8 +1,21 @@
+<div id="title">
+    <div>
+      <p>
+        投稿日：<%= @article.created_at.strftime('%Y/%m/%d') %>
+        <%# 一度でも更新されていれば更新日を表示する %>
+        <% if @article.updated_at != @article.created_at %>
+          更新日：<%= @article.updated_at.strftime('%Y/%m/%d') %>
+        <% end %>
+      </p>
+      <p>by <%= User.find(@article.user_id).email %></p>
+      <h1><%= @article.title %></h1>
+    </div>
+</div>
+
 <div id="article_wrap">
 
   <div id="content">
-    <h2><%= @article.title %></h2>
-    <p><%= @article.body %></p>
+    <p><%= simple_format @article.body %></p>
   </div>
 
   <%= render 'layouts/sidebar' %>
